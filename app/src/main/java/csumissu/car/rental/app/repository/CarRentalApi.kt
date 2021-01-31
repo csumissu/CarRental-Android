@@ -9,15 +9,16 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface CarRentalApi {
 
     @GET("cars")
-    fun searchCars(): Flowable<ResponseResult<Page<Car>>>
+    fun searchCars(@Query("status") status: Int): Flowable<ResponseResult<Page<Car>>>
 
     companion object {
 
-        private val API_HOST = "http://fb531c32694d.ngrok.io/"
+        private const val API_HOST = "http://fb531c32694d.ngrok.io/"
 
         fun getApiService(): CarRentalApi {
             val clientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
