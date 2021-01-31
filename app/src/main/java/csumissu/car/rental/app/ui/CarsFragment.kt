@@ -1,6 +1,7 @@
 package csumissu.car.rental.app.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,7 +26,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars), SwipeRefreshLayout.OnRefr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mSwipeContainer = view.findViewById(R.id.swipe_container);
+        mSwipeContainer = view.findViewById(R.id.swipe_container)
         mSwipeContainer.setOnRefreshListener(this)
         mSwipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light, android.R.color.holo_red_light)
@@ -57,12 +58,12 @@ class CarsFragment : Fragment(R.layout.fragment_cars), SwipeRefreshLayout.OnRefr
     override fun onRefresh() {
         mDisposable = mRepository.searchCars()
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnTerminate { mSwipeContainer.isRefreshing = false }
                 .subscribe({
                     mCarAdapter.setData(it)
                 }, {
+                    Log.e("CarFragment", it.message ?: "", it)
                     Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
-                }, {
-                    mSwipeContainer.isRefreshing = false
                 })
     }
 

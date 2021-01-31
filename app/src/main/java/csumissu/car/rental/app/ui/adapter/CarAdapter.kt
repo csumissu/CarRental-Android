@@ -37,9 +37,9 @@ class CarAdapter(private val mItemClick: ((Car) -> Unit))
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(car: Car) = with(car) {
-            itemView.car_id.text = String.format("#%d", car.id)
-            itemView.car_model.text = car.model
-            itemView.car_price.text = String.format("$%s per day", car.dailyRentPrice.toPlainString())
+            itemView.car_id.text = String.format("#%d", id)
+            itemView.car_model.text = model
+            itemView.car_price.text = String.format("$%s per day", dailyRentPrice.toPlainString())
         }
     }
 }

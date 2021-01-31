@@ -16,6 +16,9 @@ interface CarRentalApi {
     @GET("cars")
     fun searchCars(@Query("status") status: Int): Flowable<ResponseResult<Page<Car>>>
 
+    @GET("orders")
+    fun searchOrders(@Query("sort") sort: String): Flowable<ResponseResult<Page<Order>>>
+
     companion object {
 
         private const val API_HOST = "http://fb531c32694d.ngrok.io/"
