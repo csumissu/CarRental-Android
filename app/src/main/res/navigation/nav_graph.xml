@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_item_cars">
+
+    <fragment
+        android:id="@+id/nav_item_cars"
+        android:name="csumissu.car.rental.app.ui.CarsFragment"
+        android:label="@string/cars"
+        tools:layout="@layout/fragment_cars" />
+
+    <fragment
+        android:id="@+id/nav_item_orders"
+        android:name="csumissu.car.rental.app.ui.OrdersFragment"
+        android:label="@string/orders"
+        tools:layout="@layout/fragment_orders" />
+
+</navigation>
