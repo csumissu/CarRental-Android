@@ -8,7 +8,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface CarRentalApi {
@@ -18,6 +20,9 @@ interface CarRentalApi {
 
     @GET("orders")
     fun searchOrders(@Query("sort") sort: String): Flowable<ResponseResult<Page<Order>>>
+
+    @POST("orders")
+    fun createOrder(@Body request: CreateOrderRequest): Flowable<ResponseResult<CreateOrderResponse>>
 
     companion object {
 

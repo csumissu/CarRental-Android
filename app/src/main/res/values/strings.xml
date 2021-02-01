@@ -2,4 +2,9 @@
     <string name="app_name">Car Rental</string>
     <string name="cars">Cars</string>
     <string name="orders">Orders</string>
+    <string name="book_the_car">Book The Car</string>
+    <string name="book_days">Book days</string>
+    <string name="daily_price">Daily price</string>
+    <string name="book_days_min">1</string>
+    <string name="total_price">Total price</string>
 </resources>

@@ -19,6 +19,12 @@ class CarRentalRepository {
                 .map { it.data?.content }
     }
 
+    fun createOrder(carId: Long, bookedDays: Int): Flowable<Long> {
+        return mApiService.createOrder(CreateOrderRequest(carId, bookedDays))
+                .subscribeOn(Schedulers.io())
+                .map { it.data?.id }
+    }
+
     companion object {
         private const val STATUS_AVAILABLE = 1;
     }
