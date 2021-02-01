@@ -1,5 +1,6 @@
 package csumissu.car.rental.app.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import csumissu.car.rental.app.R
 import csumissu.car.rental.app.extensions.drawable
 import csumissu.car.rental.app.repository.CarRentalRepository
+import csumissu.car.rental.app.ui.OrderDetailActivity.Companion.KEY_ORDER_ID
 import csumissu.car.rental.app.ui.adapter.OrderAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -37,7 +39,11 @@ class OrdersFragment : Fragment(R.layout.fragment_orders), SwipeRefreshLayout.On
         itemDecoration.setDrawable(view.context.drawable(R.drawable.list_item_divider))
         mRecyclerView.addItemDecoration(itemDecoration)
 
-        mOrderAdapter = OrderAdapter { println(it) }
+        mOrderAdapter = OrderAdapter {
+            val intent = Intent(context, OrderDetailActivity::class.java)
+            intent.putExtra(KEY_ORDER_ID, it.id)
+            context?.startActivity(intent)
+        }
         mRecyclerView.adapter = mOrderAdapter
     }
 

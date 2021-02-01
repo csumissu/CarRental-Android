@@ -7,4 +7,8 @@
     <string name="daily_price">Daily price</string>
     <string name="book_days_min">1</string>
     <string name="total_price">Total price</string>
+    <string name="close_order">Close Order</string>
+    <string name="car_model">Car model</string>
+    <string name="booked_at">Booked at</string>
+    <string name="returned_at">Returned at</string>
 </resources>

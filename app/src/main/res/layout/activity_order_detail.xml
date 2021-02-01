@@ -1,0 +1,155 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="@dimen/default_margin">
+
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/close_order"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/car_model_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/daily_price"
+        android:text="@string/car_model"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/car_model"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toRightOf="@id/daily_price_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="BMW 650" />
+
+    <TextView
+        android:id="@+id/daily_price_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:labelFor="@id/daily_price"
+        android:text="@string/daily_price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/car_model_label"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/daily_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toRightOf="@id/daily_price_label"
+        app:layout_constraintTop_toBottomOf="@id/car_model"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="$100.00" />
+
+    <TextView
+        android:id="@+id/book_days_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:labelFor="@id/book_days"
+        android:text="@string/book_days"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@id/book_days"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/daily_price_label"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/book_days"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toRightOf="@id/book_days_label"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/daily_price"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/total_price_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/total_price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/book_days_label"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/total_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/book_days"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="$100.00" />
+
+    <TextView
+        android:id="@+id/booked_at_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/booked_at"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_price_label"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/booked_at"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_price"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="-" />
+
+    <TextView
+        android:id="@+id/returned_at_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/returned_at"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/booked_at_label"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/returned_at"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/booked_at"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="-" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

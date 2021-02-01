@@ -65,7 +65,6 @@ class CarDetailActivity : AppCompatActivity() {
         }
 
         mDisposable = mRepository.createOrder(car.id, bookedDays)
-                .subscribeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { mBookButton.isClickable = false }
                 .doOnTerminate { mBookButton.isClickable = true }
                 .observeOn(AndroidSchedulers.mainThread())
