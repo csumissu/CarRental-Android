@@ -1,6 +1,7 @@
 package csumissu.car.rental.app.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -12,6 +13,7 @@ import androidx.core.widget.doAfterTextChanged
 import csumissu.car.rental.app.R
 import csumissu.car.rental.app.repository.Car
 import csumissu.car.rental.app.repository.CarRentalRepository
+import csumissu.car.rental.app.ui.OrderDetailActivity.Companion.KEY_ORDER_ID
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import java.math.BigDecimal
@@ -68,16 +70,19 @@ class CarDetailActivity : AppCompatActivity() {
                 .doOnTerminate { mBookButton.isClickable = true }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    println(it)
+                    val intent = Intent(context, OrderDetailActivity::class.java)
+                    intent.putExtra(KEY_ORDER_ID, it)
+                    startActivity(intent)
                     finish()
                 }, {
-                    Log.e("CarDetailActivity", it.message ?: "", it)
+                    Log.e(TAG, it.message, it)
                     Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                 })
     }
 
     companion object {
         const val KEY_CAR_DATA = "car"
+        private const val TAG = "CarDetailActivity"
     }
 
 }

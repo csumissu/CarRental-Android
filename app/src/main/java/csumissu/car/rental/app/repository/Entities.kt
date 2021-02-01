@@ -34,3 +34,16 @@ data class CreateOrderRequest(val carId: Long,
                               val bookedDays: Int)
 
 data class CreateOrderResponse(val id: Long)
+
+data class OrderDetail(
+        val id: Long,
+        val bookedAt: Instant,
+        val returnedAt: Instant?,
+        val dailyRentPrice: BigDecimal,
+        val bookedDays: Int,
+        val totalPrice: BigDecimal,
+        val car: Car) {
+
+    data class Car(val id: Long,
+                   val model: String)
+}

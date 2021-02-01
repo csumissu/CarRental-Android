@@ -51,7 +51,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars), SwipeRefreshLayout.OnRefr
                 .subscribe({
                     mCarAdapter.setData(it)
                 }, {
-                    Log.e("CarFragment", it.message ?: "", it)
+                    Log.e(TAG, it.message, it)
                     Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                 })
     }
@@ -77,4 +77,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars), SwipeRefreshLayout.OnRefr
         mRecyclerView.adapter = mCarAdapter
     }
 
+    companion object {
+        private const val TAG = "CarFragment"
+    }
 }

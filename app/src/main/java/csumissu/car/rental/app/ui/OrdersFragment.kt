@@ -61,8 +61,12 @@ class OrdersFragment : Fragment(R.layout.fragment_orders), SwipeRefreshLayout.On
                 .subscribe({
                     mOrderAdapter.setData(it)
                 }, {
-                    Log.e("OrderFragment", it.message ?: "", it)
+                    Log.e(TAG, it.message, it)
                     Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                 })
+    }
+
+    companion object {
+        private const val TAG = "OrderFragment"
     }
 }

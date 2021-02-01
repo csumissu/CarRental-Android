@@ -8,10 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface CarRentalApi {
 
@@ -19,10 +16,16 @@ interface CarRentalApi {
     fun searchCars(@Query("status") status: Int): Flowable<ResponseResult<Page<Car>>>
 
     @GET("orders")
-    fun searchOrders(@Query("sort") sort: String): Flowable<ResponseResult<Page<Order>>>
+    fun searchOrders(@Query("sort") sort: List<String>): Flowable<ResponseResult<Page<Order>>>
 
     @POST("orders")
     fun createOrder(@Body request: CreateOrderRequest): Flowable<ResponseResult<CreateOrderResponse>>
+
+    @GET("orders/{id}")
+    fun getOrder(@Path("id") id: Long): Flowable<ResponseResult<OrderDetail>>
+
+    @POST("orders/{id}/close")
+    fun closeOrder(@Path("id") id: Long): Flowable<ResponseResult<Unit>>
 
     companion object {
 
