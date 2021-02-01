@@ -29,7 +29,7 @@ interface CarRentalApi {
 
     companion object {
 
-        private const val API_HOST = "http://f0de35be2180.ngrok.io/"
+        private const val API_HOST = "http://bc.csumissu.xyz/"
 
         fun getApiService(): CarRentalApi {
             val clientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()

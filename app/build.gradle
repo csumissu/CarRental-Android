@@ -19,9 +19,24 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    signingConfigs {
+        beta {
+            storeFile file('beta.jks')
+            storePassword '123456'
+            keyAlias 'beta'
+            keyPassword '123456'
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        beta {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.beta
         }
     }
 }
