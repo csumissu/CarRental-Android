@@ -1,4 +1,4 @@
-package csumissu.car.rental.app.ui.adapter
+package csumissu.car.rental.app.ui.main.adapter
 
 import android.view.View
 import android.view.ViewGroup

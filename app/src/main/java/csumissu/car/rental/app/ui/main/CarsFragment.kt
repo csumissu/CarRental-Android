@@ -1,4 +1,4 @@
-package csumissu.car.rental.app.ui
+package csumissu.car.rental.app.ui.main
 
 import android.os.Bundle
 import android.util.Log
@@ -12,14 +12,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import csumissu.car.rental.app.R
 import csumissu.car.rental.app.extensions.drawable
 import csumissu.car.rental.app.repository.CarRentalRepository
-import csumissu.car.rental.app.ui.adapter.OrderAdapter
+import csumissu.car.rental.app.ui.main.adapter.CarAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
-class OrdersFragment : Fragment(R.layout.fragment_orders), SwipeRefreshLayout.OnRefreshListener {
+class CarsFragment : Fragment(R.layout.fragment_cars), SwipeRefreshLayout.OnRefreshListener {
+
     private lateinit var mSwipeContainer: SwipeRefreshLayout
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mOrderAdapter: OrderAdapter
+    private lateinit var mCarAdapter: CarAdapter
     private val mRepository = CarRentalRepository()
     private var mDisposable: Disposable? = null
 
@@ -27,18 +28,18 @@ class OrdersFragment : Fragment(R.layout.fragment_orders), SwipeRefreshLayout.On
         super.onViewCreated(view, savedInstanceState)
         mSwipeContainer = view.findViewById(R.id.swipe_container)
         mSwipeContainer.setOnRefreshListener(this)
-        mSwipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+        mSwipeContainer.setColorSchemeResources(android.R.color.holo_blue_dark,
                 android.R.color.holo_green_light, android.R.color.holo_red_light)
 
-        mRecyclerView = view.findViewById(R.id.rv_order_items)
-        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView = view.findViewById(R.id.rv_car_items)
+        mRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         itemDecoration.setDrawable(view.context.drawable(R.drawable.list_item_divider))
         mRecyclerView.addItemDecoration(itemDecoration)
 
-        mOrderAdapter = OrderAdapter { println(it) }
-        mRecyclerView.adapter = mOrderAdapter
+        mCarAdapter = CarAdapter { println(it) }
+        mRecyclerView.adapter = mCarAdapter
     }
 
     override fun onStart() {
@@ -55,14 +56,15 @@ class OrdersFragment : Fragment(R.layout.fragment_orders), SwipeRefreshLayout.On
     }
 
     override fun onRefresh() {
-        mDisposable = mRepository.searchOrders()
+        mDisposable = mRepository.searchCars()
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate { mSwipeContainer.isRefreshing = false }
                 .subscribe({
-                    mOrderAdapter.setData(it)
+                    mCarAdapter.setData(it)
                 }, {
-                    Log.e("OrderFragment", it.message ?: "", it)
+                    Log.e("CarFragment", it.message ?: "", it)
                     Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                 })
     }
+
 }
