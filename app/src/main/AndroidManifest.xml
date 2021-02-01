@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.car.CarDetailActivity"
+            android:name=".ui.CarDetailActivity"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
     </application>

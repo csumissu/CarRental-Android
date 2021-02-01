@@ -1,4 +1,4 @@
-package csumissu.car.rental.app.ui.car
+package csumissu.car.rental.app.ui
 
 import android.content.Context
 import android.os.Bundle

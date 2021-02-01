@@ -1,4 +1,4 @@
-package csumissu.car.rental.app.ui.main
+package csumissu.car.rental.app.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import csumissu.car.rental.app.R
 import csumissu.car.rental.app.extensions.drawable
 import csumissu.car.rental.app.repository.CarRentalRepository
-import csumissu.car.rental.app.ui.main.adapter.OrderAdapter
+import csumissu.car.rental.app.ui.adapter.OrderAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 

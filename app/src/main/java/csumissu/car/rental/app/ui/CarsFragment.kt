@@ -1,4 +1,4 @@
-package csumissu.car.rental.app.ui.main
+package csumissu.car.rental.app.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,9 +13,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import csumissu.car.rental.app.R
 import csumissu.car.rental.app.extensions.drawable
 import csumissu.car.rental.app.repository.CarRentalRepository
-import csumissu.car.rental.app.ui.car.CarDetailActivity
-import csumissu.car.rental.app.ui.car.CarDetailActivity.Companion.KEY_CAR_DATA
-import csumissu.car.rental.app.ui.main.adapter.CarAdapter
+import csumissu.car.rental.app.ui.CarDetailActivity.Companion.KEY_CAR_DATA
+import csumissu.car.rental.app.ui.adapter.CarAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
